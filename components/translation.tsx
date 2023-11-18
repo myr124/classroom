@@ -18,7 +18,26 @@ const Translation = () => {
       audioConfig
     );
     speechRecognizer.recognizeOnceAsync(async (result) => {
-      setText(result.text);
+      switch (result.reason) {
+        case mcsSDK.ResultReason.RecognizedSpeech:
+          console.log(`RECOGNIZED: Text=${result.text}`);
+          break;
+        case mcsSDK.ResultReason.NoMatch:
+          console.log("NOMATCH: Speech could not be recognized.");
+          break;
+        case mcsSDK.ResultReason.Canceled:
+          const cancellation = mcsSDK.CancellationDetails.fromResult(result);
+          console.log(`CANCELED: Reason=${cancellation.reason}`);
+
+          if (cancellation.reason == mcsSDK.CancellationReason.Error) {
+            console.log(`CANCELED: ErrorCode=${cancellation.ErrorCode}`);
+            console.log(`CANCELED: ErrorDetails=${cancellation.errorDetails}`);
+            console.log(
+              "CANCELED: Did you set the speech resource key and region values?"
+            );
+          }
+          break;
+      }
       speechRecognizer.close();
     });
   }, []);
