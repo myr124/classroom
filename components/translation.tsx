@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import * as mcsSDK from "microsoft-cognitiveservices-speech-sdk";
 const speechConfig = mcsSDK.SpeechConfig.fromSubscription(
-  process.env.NEXT_PUBLIC_SPEECH_KEY ?? "",
-  process.env.NEXT_PUBLIC_SPEECH_REGION ?? ""
+  process.env.NEXT_PUBLIC_SPEECH_KEY,
+  process.env.NEXT_PUBLIC_SPEECH_REGION
 );
 
-speechConfig.speechRecognitionLanguage = "en-US";
+speechConfig.speechRecognitionLanguage = "hi-IN";
 
 const Translation = () => {
   const [text, setText] = useState("test");
@@ -49,7 +49,7 @@ const Translation = () => {
           });
         }}
       >
-        Press Me!
+        Please press me!
       </button>
       <p className="p-4">{text}</p>
     </div>
