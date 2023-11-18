@@ -3,11 +3,11 @@
 import React, { useEffect, useState } from "react";
 import * as mcsSDK from "microsoft-cognitiveservices-speech-sdk";
 const speechConfig = mcsSDK.SpeechConfig.fromSubscription(
-  process.env.NEXT_PUBLIC_SPEECH_KEY,
-  process.env.NEXT_PUBLIC_SPEECH_REGION
+  process.env.NEXT_PUBLIC_SPEECH_KEY ?? "",
+  process.env.NEXT_PUBLIC_SPEECH_REGION ?? ""
 );
 
-speechConfig.speechRecognitionLanguage = "ml";
+speechConfig.speechRecognitionLanguage = "ml-IN";
 
 const Translation = () => {
   const [text, setText] = useState("test");
