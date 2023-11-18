@@ -1,7 +1,11 @@
+import Translation from "@/components/translation";
+import fs from "fs";
+
 export default function Home() {
+  const file = fs.readFileSync("public/YourAudioFIle.wav");
   return (
     <div>
-      <a href="test">testing</a>
+      <Translation file={file} />
     </div>
   );
 }
