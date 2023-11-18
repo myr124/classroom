@@ -7,7 +7,7 @@ const speechConfig = mcsSDK.SpeechConfig.fromSubscription(
   process.env.NEXT_PUBLIC_SPEECH_REGION ?? ""
 );
 
-speechConfig.speechRecognitionLanguage = "ml-IN";
+speechConfig.speechRecognitionLanguage = "en-US";
 
 const Translation = () => {
   const [text, setText] = useState("test");
