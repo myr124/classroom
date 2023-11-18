@@ -1,6 +1,4 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import * as mcsSDK from "microsoft-cognitiveservices-speech-sdk";
 const speechConfig = mcsSDK.SpeechConfig.fromSubscription(
   process.env.NEXT_PUBLIC_SPEECH_KEY ?? "",
@@ -13,8 +11,9 @@ const Translation = () => {
   const [text, setText] = useState("test");
   const [micOn, setMicOn] = useState(false);
   return (
-    <div>
+    <div className="flex flex-col justify-center align-middle">
       <button
+        className="btn btn-primary "
         onClick={() => {
           const audioConfig = mcsSDK.AudioConfig.fromDefaultMicrophoneInput();
           const speechRecognizer = new mcsSDK.SpeechRecognizer(
@@ -52,7 +51,7 @@ const Translation = () => {
       >
         Press Me!
       </button>
-      <p>{text}</p>
+      <p className="p-4">{text}</p>
     </div>
   );
 };
