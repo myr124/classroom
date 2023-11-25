@@ -11,10 +11,7 @@ const Translation = () => {
   const [text, setText] = useState("test");
 
   const audioConfig = mcsSDK.AudioConfig.fromDefaultMicrophoneInput();
-  const speechRecognizer = new mcsSDK.SpeechRecognizer(
-    speechConfig,
-    audioConfig
-  );
+
   const transcriber = new mcsSDK.ConversationTranscriber(
     speechConfig,
     audioConfig
@@ -46,7 +43,7 @@ const Translation = () => {
       >
         Press Me!
       </button>
-
+      <p className="p-4">{text}</p>
       <button
         className="btn btn-primary"
         onClick={() => {
@@ -56,7 +53,6 @@ const Translation = () => {
       >
         To stop press me!
       </button>
-      <p className="p-4">{text}</p>
     </div>
   );
 };

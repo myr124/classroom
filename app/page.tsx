@@ -1,11 +1,12 @@
 "use client";
-
-import Translation from "@/components/translation";
+import Navbar from "@/components/navbar";
+import Funcswitch from "@/components/funcswitch";
 
 export default function Home() {
   return (
     <div>
-      <Translation />
+      <Navbar />
+      <Funcswitch />
     </div>
   );
 }
