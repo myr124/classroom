@@ -49,7 +49,6 @@ const Funcswitch = () => {
           aria-label="Notes"
           onClick={() => {
             setTab("Tab 3");
-            console.log(tab);
           }}
           checked={tab === "Tab 3"}
         />
