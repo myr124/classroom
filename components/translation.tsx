@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import * as mcsSDK from "microsoft-cognitiveservices-speech-sdk";
+import { BsFillFilePlayFill } from "react-icons/bs";
+import { BsFillStopCircleFill } from "react-icons/bs";
 // const speechConfig = mcsSDK.SpeechConfig.fromSubscription(
 //   process.env.NEXT_PUBLIC_SPEECH_KEY ?? "",
 //   process.env.NEXT_PUBLIC_SPEECH_REGION ?? ""
@@ -14,7 +16,7 @@ const Translation = () => {
   const recognizer = useRef<mcsSDK.SpeechRecognizer | null>(null);
 
   const [myTranscript, setMyTranscript] = useState("");
-  const [recognizingTranscript, setRecTranscript] = useState("");
+  // const [recognizingTranscript, setRecTranscript] = useState("");
 
   useEffect(() => {
     speechConfig.current = mcsSDK.SpeechConfig.fromSubscription(
@@ -97,13 +99,19 @@ const Translation = () => {
 
   return (
     <div className="flex flex-col justify-center align-middle p-4">
-      <button className="btn btn-primary " onClick={resumeListening}>
-        Press Me!
+      <button className="btn " onClick={resumeListening}>
+        <BsFillFilePlayFill />
       </button>
-      <p className="p-4 text-6xl flex flex-grow-3">{myTranscript}</p>
-      <button className="btn btn-primary" onClick={stopListening}>
-        To stop press me!
+      <button className="btn" onClick={stopListening}>
+        <BsFillStopCircleFill />
       </button>
+      <textarea
+        className="textarea textarea-bordered textarea-lg w-full p-4 text-6xl flex flex-grow-3 min-h-[500px]"
+        value={myTranscript}
+        onChange={(e) => {
+          setMyTranscript(e.target.value);
+        }}
+      ></textarea>
     </div>
   );
 };

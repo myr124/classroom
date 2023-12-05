@@ -8,7 +8,6 @@ export default function Home() {
     <div>
       <Navbar />
       <div className="flex flex-row">
-        <Sidebar></Sidebar>
         <Funcswitch />
       </div>
     </div>
