@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Translation from "./translation";
+import Fileupload from "./fileupload";
 
 const Funcswitch = () => {
   const [tab, setTab] = useState("Tab 1");
@@ -21,7 +22,7 @@ const Funcswitch = () => {
         role="tabpanel"
         className="tab-content bg-base-100 border-base-300 rounded-box p-6"
       >
-        Tab content 1
+        <Fileupload></Fileupload>
       </div>
       <input
         type="radio"

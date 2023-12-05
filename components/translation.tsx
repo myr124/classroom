@@ -8,7 +8,7 @@ const speechConfig = mcsSDK.SpeechConfig.fromSubscription(
 speechConfig.speechRecognitionLanguage = "en-US";
 
 const Translation = () => {
-  const [text, setText] = useState("test");
+  const [text, setText] = useState("");
 
   const audioConfig = mcsSDK.AudioConfig.fromDefaultMicrophoneInput();
 
@@ -22,32 +22,30 @@ const Translation = () => {
   };
   transcriber.sessionStopped = (s, e) => {
     console.log(e);
+    console.log("session stopped");
   };
+
   transcriber.transcribing = (s, e) => {
-    console.log(e);
+    setText((t) => t + " " + e.result.text);
   };
 
   return (
-    <div className="flex flex-col justify-center align-middle">
+    <div className="flex flex-col justify-center align-middle p-4">
       <button
         className="btn btn-primary "
         onClick={() => {
-          console.log("Starting");
           transcriber.startTranscribingAsync(() => {
             console.log("transcribing started");
-            transcriber.transcribed = (s, e) => {
-              setText(e.result.text);
-            };
+            transcriber.transcribing;
           });
         }}
       >
         Press Me!
       </button>
-      <p className="p-4">{text}</p>
+      <p className="p-4 text-6xl flex flex-grow-3">{text}</p>
       <button
         className="btn btn-primary"
         onClick={() => {
-          console.log("stopping");
           transcriber.stopTranscribingAsync(() => {});
         }}
       >
