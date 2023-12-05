@@ -3,8 +3,8 @@ import { AiOutlineCloudUpload } from "react-icons/ai";
 
 const Fileupload = () => {
   return (
-    <div>
-      <button className="btn flex flex-row align-middle justify-center">
+    <div className="flex flex-row align-middle justify-center">
+      <button className="btn-lg ">
         Upload <AiOutlineCloudUpload />
       </button>
     </div>
