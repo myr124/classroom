@@ -1,13 +1,10 @@
+import useLocalStorage from "@/utils/hooks/uselocalstorage";
 import React, { useEffect, useState } from "react";
 
 type Theme = "light" | "black";
 
 const Navbar = () => {
-  const [theme, setTheme] = useState<Theme>(
-    localStorage.getItem("theme")
-      ? (localStorage.getItem("theme") as Theme)
-      : "light"
-  );
+  const [theme, setTheme] = useLocalStorage<Theme>("theme", "black");
   const handleToggle: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     if (e.target.checked) {
       setTheme("black");
@@ -16,10 +13,8 @@ const Navbar = () => {
     }
   };
   useEffect(() => {
-    localStorage.setItem("theme", theme);
-    const localTheme = localStorage.getItem("theme");
-    if (localTheme && (localTheme as Theme)) {
-      document.querySelector("html")?.setAttribute("data-theme", localTheme);
+    if (theme) {
+      document.querySelector("html")?.setAttribute("data-theme", theme);
     }
   }, [theme]);
   return (
