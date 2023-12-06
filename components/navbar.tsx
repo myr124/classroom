@@ -42,7 +42,7 @@ const Navbar = () => {
         </button>
       </div>
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">VoiceApp</a>
+        <a className="btn btn-ghost text-xl">VoxScribe</a>
       </div>
       <div className="flex-none">
         <label className="swap swap-rotate">

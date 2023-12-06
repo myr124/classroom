@@ -29,7 +29,7 @@ const Funcswitch = () => {
         name="my_tabs_2"
         role="tab"
         className="tab "
-        aria-label="Files"
+        aria-label="File Upload"
         onClick={() => {
           setTab("Tab 2");
         }}

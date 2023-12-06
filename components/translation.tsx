@@ -99,12 +99,14 @@ const Translation = () => {
 
   return (
     <div className="flex flex-col justify-center align-middle p-4">
-      <button className="btn " onClick={resumeListening}>
-        <BsFillFilePlayFill />
-      </button>
-      <button className="btn" onClick={stopListening}>
-        <BsFillStopCircleFill />
-      </button>
+      <div className="flex flex-row justify-center align-middle">
+        <button className="btn " onClick={resumeListening}>
+          <BsFillFilePlayFill />
+        </button>
+        <button className="btn" onClick={stopListening}>
+          <BsFillStopCircleFill />
+        </button>
+      </div>
       <textarea
         className="textarea textarea-bordered textarea-lg w-full p-4 text-6xl flex flex-grow-3 min-h-[500px]"
         value={myTranscript}
